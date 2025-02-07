@@ -45,8 +45,9 @@ void ToggleIntakeEnter::onPress() {
         tgEnterIntake = true;
         tgExitIntake = false;
     }
-    
 }
+
+void ToggleIntakeEnter::onRelease() {}
 
 ToggleIntakeExit::ToggleIntakeExit(pros::controller_digital_e_t button): BaseButton(button) {}
 
@@ -67,3 +68,5 @@ void ToggleIntakeExit::onPress() {
     }
     
 }
+
+void ToggleIntakeExit::onRelease() {}

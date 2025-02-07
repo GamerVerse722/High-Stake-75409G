@@ -20,8 +20,8 @@ namespace button{
             static void run();
             void update();
 
-            virtual void onPress() = 0;
-            virtual void onRelease() = 0;
+            virtual void onPress() {}
+            virtual void onRelease() {}
     };
 
 }

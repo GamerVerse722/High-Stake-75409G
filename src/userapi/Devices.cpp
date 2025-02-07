@@ -1,4 +1,6 @@
 #include "user/Devices.hpp"
+#include "user/button/IntakeButton.hpp"
+#include "user/button/MobileGoalButton.hpp"
 
 namespace devices {
     /*
@@ -78,3 +80,12 @@ namespace devices {
     pros::Motor intake(12);
     pros::Motor lift(-11);
 }
+
+// Button Controll setup
+EnterIntake intakeButton(pros::E_CONTROLLER_DIGITAL_L1);
+ExitIntake exitIntakeButton(pros::E_CONTROLLER_DIGITAL_L2);
+ToggleIntakeEnter toggleIntakeEnterButton(pros::E_CONTROLLER_DIGITAL_DOWN);
+ToggleIntakeExit toggleIntakeExitButton(pros::E_CONTROLLER_DIGITAL_RIGHT);
+
+MobileGoalIn mobileGoalInButton(pros::E_CONTROLLER_DIGITAL_R1);
+MobileGoalOut mobileGoalOutButton(pros::E_CONTROLLER_DIGITAL_R2);
