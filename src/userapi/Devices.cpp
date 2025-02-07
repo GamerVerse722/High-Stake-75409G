@@ -1,4 +1,5 @@
 #include "user/Devices.hpp"
+// #include "user/BaseButton.hpp"
 #include "user/button/IntakeButton.hpp"
 #include "user/button/MobileGoalButton.hpp"
 
@@ -82,7 +83,7 @@ namespace devices {
 }
 
 // Button Controll setup
-EnterIntake intakeButton(pros::E_CONTROLLER_DIGITAL_L1);
+EnterIntake intakeButton(pros::E_CONTROLLER_DIGITAL_L1, true);
 ExitIntake exitIntakeButton(pros::E_CONTROLLER_DIGITAL_L2);
 ToggleIntakeEnter toggleIntakeEnterButton(pros::E_CONTROLLER_DIGITAL_DOWN);
 ToggleIntakeExit toggleIntakeExitButton(pros::E_CONTROLLER_DIGITAL_RIGHT);

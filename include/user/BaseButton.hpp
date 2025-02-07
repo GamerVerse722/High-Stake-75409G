@@ -11,10 +11,11 @@ namespace button{
         private:
             static std::vector<BaseButton*> buttonActions;
             pros::controller_digital_e_t button;
-            static bool wasPressed;
+            bool wasPressed = false;
+            bool debug = false;
 
         public:
-            BaseButton(pros::controller_digital_e_t button);
+            BaseButton(pros::controller_digital_e_t button, bool setDebug = false);
             virtual ~BaseButton() = default;
 
             static void run();

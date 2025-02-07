@@ -1,4 +1,5 @@
 #include "user/BaseButton.hpp"
+#include "pros/misc.h"
 #include "user/Devices.hpp"
 
 namespace button {
@@ -6,9 +7,8 @@ namespace button {
     bool tgExitIntake = false;
 
     std::vector<BaseButton*> BaseButton::buttonActions;
-    bool BaseButton::wasPressed;
 
-    BaseButton::BaseButton(pros::controller_digital_e_t button) : button(button) {
+    BaseButton::BaseButton(pros::controller_digital_e_t button, bool setDebug) : button(button), debug(setDebug) {
         buttonActions.push_back(this);
     }
 
@@ -30,6 +30,8 @@ namespace button {
         }
 
         wasPressed = isPressed;
-        std::cout << isPressed << ", " << wasPressed << std::endl;
+        if (debug) {
+            std::cout << isPressed << ", " << wasPressed << std::endl;
+        }
     }
 }

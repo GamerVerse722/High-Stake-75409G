@@ -4,7 +4,7 @@
 using namespace button;
 using namespace devices;
 
-EnterIntake::EnterIntake(pros::controller_digital_e_t button): BaseButton(button) {}
+EnterIntake::EnterIntake(pros::controller_digital_e_t button, bool setDebug): BaseButton(button, setDebug) {}
 
 void EnterIntake::onPress() {
     lift.move(127);
@@ -16,7 +16,7 @@ void EnterIntake::onRelease() {
     intake.move(0);
 }
 
-ExitIntake::ExitIntake(pros::controller_digital_e_t button): BaseButton(button) {}
+ExitIntake::ExitIntake(pros::controller_digital_e_t button, bool setDebug): BaseButton(button, setDebug) {}
 
 void ExitIntake::onPress() {
     lift.move(-127);
@@ -28,7 +28,7 @@ void ExitIntake::onRelease() {
     intake.move(0);
 }
 
-ToggleIntakeEnter::ToggleIntakeEnter(pros::controller_digital_e_t button): BaseButton(button) {}
+ToggleIntakeEnter::ToggleIntakeEnter(pros::controller_digital_e_t button, bool setDebug): BaseButton(button, setDebug) {}
 
 void ToggleIntakeEnter::onPress() {
     if (tgEnterIntake) {
@@ -49,7 +49,7 @@ void ToggleIntakeEnter::onPress() {
 
 void ToggleIntakeEnter::onRelease() {}
 
-ToggleIntakeExit::ToggleIntakeExit(pros::controller_digital_e_t button): BaseButton(button) {}
+ToggleIntakeExit::ToggleIntakeExit(pros::controller_digital_e_t button, bool setDebug): BaseButton(button, setDebug) {}
 
 void ToggleIntakeExit::onPress() {
     if (tgExitIntake) {
@@ -60,8 +60,8 @@ void ToggleIntakeExit::onPress() {
         tgExitIntake = false;
 
     } else {
-        lift.move(127);
-        intake.move(127);
+        lift.move(-127);
+        intake.move(-127);
 
         tgEnterIntake = false;
         tgExitIntake = true;

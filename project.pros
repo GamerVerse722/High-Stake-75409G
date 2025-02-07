@@ -299,7 +299,8 @@
     },
     "upload_options": {
       "description": "The skibidiest program of the land ",
-      "slot": 3
+      "slot": 3,
+      "after": "run"
     },
     "use_early_access": false
   }
