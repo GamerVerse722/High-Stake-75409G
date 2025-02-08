@@ -1,5 +1,6 @@
 #include "main.h"
 #include "lemlib/logger/logger.hpp"
+#include "pros/rtos.hpp"
 #include "user/Devices.hpp"
 #include "user/BaseButton.hpp"
 
@@ -77,9 +78,15 @@ void competition_initialize() {}
 ASSET(GAuto_txt);
 
 void autonomous() {
-    chassis.setPose(0,0,0);
-    // configuredButtons::toggleMobileGoalButton.onPress();
-    chassis.follow(GAuto_txt, 15, 2000, false);
+    chassis.setPose(-61,38,270);
+    mobileGoal.move_absolute(170, -127);
+    chassis.follow(GAuto_txt, 15, 3000, false, false);
+    pros::delay(100);
+    configuredButtons::toggleMobileGoalButton.onPress();
+    pros::delay(1000);
+    configuredButtons::toggleIntakeEnterButton.onPress();
+    pros::delay(1000);
+    configuredButtons::toggleIntakeEnterButton.onPress();
 }
 
 /**
