@@ -79,7 +79,7 @@ ASSET(GAuto_txt);
 
 void autonomous() {
     chassis.setPose(-61,38,270);
-    mobileGoal.move_absolute(170, -127);
+    mobileGoal.move_absolute(180, -127);
     chassis.follow(GAuto_txt, 15, 3000, false, false);
     pros::delay(100);
     configuredButtons::toggleMobileGoalButton.onPress();
@@ -105,6 +105,11 @@ void autonomous() {
 void opcontrol() {
     // controller
     // loop to continuously update motors
+    pros::Task warning = pros::Task{ [] {
+        pros::delay(65000);
+        controller.rumble("- - - - - - - -");
+    }};
+    warning.notify();
 
     while (true) {
         // get joystick positions
