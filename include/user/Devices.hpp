@@ -4,6 +4,8 @@
 #include "pros/imu.hpp"
 #include "pros/misc.hpp"
 #include "pros/motor_group.hpp"
+#include "user/button/IntakeButton.hpp"
+#include "user/button/MobileGoalButton.hpp"
 
 namespace devices {
     extern pros::MotorGroup leftMotors;
@@ -24,4 +26,15 @@ namespace devices {
     extern pros::MotorGroup mobileGoal;
     extern pros::Motor intake;
     extern pros::Motor lift;
+}
+
+namespace configuredButtons{
+    extern EnterIntake intakeButton;
+    extern ExitIntake exitIntakeButton;
+    extern ToggleIntakeEnter toggleIntakeEnterButton;
+    extern ToggleIntakeExit toggleIntakeExitButton;
+
+    extern MobileGoalIn mobileGoalInButton;
+    extern MobileGoalOut mobileGoalOutButton;
+    extern ToggleMobileGoal toggleMobileGoalButton;
 }

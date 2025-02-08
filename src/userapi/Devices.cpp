@@ -14,7 +14,7 @@ namespace devices {
         Back: 2
     */
 
-    pros::MotorGroup leftMotors({9, 10}, pros::MotorGearset::green);
+    pros::MotorGroup leftMotors({-9, -10}, pros::MotorGearset::green);
     pros::MotorGroup rightMotors({1, 2}, pros::MotorGearset::green);
 
     pros::Imu imu(8);
@@ -25,7 +25,7 @@ namespace devices {
                                 &rightMotors, // right motor group
                                 12.5, // 10 inch track width
                                 lemlib::Omniwheel::OLD_4, // using new 4" omnis
-                                360 / 1.4, // drivetrain rpm is 360
+                                360 * 1.4, // drivetrain rpm is 360
                                 8 // horizontal drift is 2. If we had traction wheels, it would have been 8
     );
 
@@ -83,10 +83,13 @@ namespace devices {
 }
 
 // Button Controll setup
-EnterIntake intakeButton(pros::E_CONTROLLER_DIGITAL_L1, true);
-ExitIntake exitIntakeButton(pros::E_CONTROLLER_DIGITAL_L2);
-ToggleIntakeEnter toggleIntakeEnterButton(pros::E_CONTROLLER_DIGITAL_DOWN);
-ToggleIntakeExit toggleIntakeExitButton(pros::E_CONTROLLER_DIGITAL_RIGHT);
+namespace configuredButtons {
+    EnterIntake intakeButton(pros::E_CONTROLLER_DIGITAL_L1);
+    ExitIntake exitIntakeButton(pros::E_CONTROLLER_DIGITAL_L2);
+    ToggleIntakeEnter toggleIntakeEnterButton(pros::E_CONTROLLER_DIGITAL_DOWN);
+    ToggleIntakeExit toggleIntakeExitButton(pros::E_CONTROLLER_DIGITAL_RIGHT);
 
-MobileGoalIn mobileGoalInButton(pros::E_CONTROLLER_DIGITAL_R1);
-MobileGoalOut mobileGoalOutButton(pros::E_CONTROLLER_DIGITAL_R2);
+    MobileGoalIn mobileGoalInButton(pros::E_CONTROLLER_DIGITAL_R1);
+    MobileGoalOut mobileGoalOutButton(pros::E_CONTROLLER_DIGITAL_R2);
+    ToggleMobileGoal toggleMobileGoalButton(pros::E_CONTROLLER_DIGITAL_B, false);
+}

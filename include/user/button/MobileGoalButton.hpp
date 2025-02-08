@@ -16,3 +16,10 @@ class MobileGoalOut: public BaseButton {
         void onPress() override;
         void onRelease() override;
 };
+
+class ToggleMobileGoal: public BaseButton {
+    public:
+        ToggleMobileGoal(pros::controller_digital_e_t button, bool setDebug = false);
+        void onPress() override;
+        void onRelease() override;
+};

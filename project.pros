@@ -298,9 +298,9 @@
       }
     },
     "upload_options": {
-      "description": "The skibidiest program of the land ",
+      "description": "skibidi",
       "slot": 3,
-      "after": "run"
+      "after": "none"
     },
     "use_early_access": false
   }

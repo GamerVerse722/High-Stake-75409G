@@ -13,7 +13,6 @@ namespace button {
     }
 
     void BaseButton::run() {
-
         for (BaseButton* action : buttonActions) {
             action->update();
             pros::delay(10);

@@ -35,6 +35,9 @@ void initialize() {
             pros::lcd::print(2, "Theta: %f", chassis.getPose().theta); // heading
             // log position telemetry
             lemlib::telemetrySink()->info("Chassis pose: {}", chassis.getPose());
+            pros::lcd::print(3, "Mobile Goal Temp: %f", mobileGoal.get_temperature());
+            pros::lcd::print(4, "Mobile Goal Degrees: %f", mobileGoal.get_position());
+            pros::lcd::print(5, "Mobile Goal Velocity: %f", mobileGoal.get_actual_velocity());
             // delay to save resources
             pros::delay(50);
         }
@@ -70,7 +73,14 @@ void competition_initialize() {}
  * will be stopped. Re-enabling the robot will restart the task, not re-start it
  * from where it left off.
  */
-void autonomous() {}
+
+ASSET(GAuto_txt);
+
+void autonomous() {
+    chassis.setPose(0,0,0);
+    // configuredButtons::toggleMobileGoalButton.onPress();
+    chassis.follow(GAuto_txt, 15, 2000, false);
+}
 
 /**
  * Runs the operator control code. This function will be started in its own task
@@ -97,7 +107,7 @@ void opcontrol() {
         button::BaseButton::run();
         // std::cout << leftBumper << std::endl;
         // move the chassis with curvature drive
-        chassis.arcade(-rightX, -leftY);
+        chassis.arcade(leftY, rightX);
 
         // delay to save resources
         pros::delay(10);
