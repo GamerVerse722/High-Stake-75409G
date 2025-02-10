@@ -14,7 +14,7 @@ using namespace devices;
  * to keep execution time for this mode under a few seconds.
  */
 void initialize() {
-	    pros::lcd::initialize(); // initialize brain screen
+    pros::lcd::initialize(); // initialize brain screen
     chassis.calibrate(); // calibrate sensors
     // std::cout << "HERE!!!" <<poer456dfgscvx 
     mobileGoal.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
